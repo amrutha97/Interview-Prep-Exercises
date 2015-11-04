@@ -1,0 +1,99 @@
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+import java.util.TreeMap;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		System.out.println(largestDigit(-573026));
+	}
+	
+	public static int largestDigit(int n) {
+	    int largest = Math.abs(n % 10);
+	    return largestDigit(n, largest);
+	}
+	
+	public static int largestDigit(int n, int largest) {
+		if(n % 10 == n) {
+	        return largest;
+	    } else if(Math.abs((n/10) % 10) > largest) {
+	        largest = Math.abs((n/10) % 10);
+	        return Math.abs(largestDigit(n /10, largest));
+	    } else {
+	    	return Math.abs(largestDigit(n /10, largest));
+	    }
+	}
+	
+	public static void removeShorterStrings(ArrayList<String> list) { 
+		if(list.size() % 2 == 0) {
+			for(int i=list.size()-1; i>=0; i-=2) { 
+				if(list.get(i).length() < list.get(i-1).length()) { 
+					list.remove(i); 
+				} else { 
+					list.remove(i-1); 
+				} 
+			} 
+		} else {
+			for(int i=list.size()-2; i>=0; i-=2) { 
+				if(list.get(i).length() < list.get(i-1).length()) { 
+					list.remove(i); 
+				} else { 
+					list.remove(i-1); 
+				} 
+			} 
+		}
+	}
+	
+	public static int digitMatch(int first, int second) {
+	    if(first < 0 || second < 0) {
+	        throw new IllegalArgumentException();
+	    }
+	    String s1 = first + "";
+	    String s2 = second + "";
+	    if(s1.equals("") || s2.equals("")) {
+	    	return 0;
+	    }
+	    else if(s1.equals(s2)) {
+	    	return s1.length();
+	    }
+	    else {
+	    	s1 = s1.substring(s1.length()-1);
+	    	s2 = s2.substring(s2.length()-1);
+	    	int x = Integer.parseInt(s1);
+	    	int y = Integer.parseInt(s2);
+	    	return digitMatch(x, y);
+	    }
+	 }	
+	
+	public static boolean contains3(ArrayList<String> s) {
+	    Map<String, Integer> map = new TreeMap<String, Integer>();
+	    for(String word : s) {
+	        if(!map.containsKey(word)) {
+	            map.put(word, 1);
+	        } else {
+	            int previousValue = map.get(word) + 1;
+	            map.put(word, previousValue);
+	        }
+	    }
+	    
+	    for(String key : map.keySet()) {
+	        if(map.get(key) >= 3) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+	
+	public int countCommon(ArrayList<Integer> one, ArrayList<Integer> two) {
+	    Set<Integer> set = new HashSet<Integer>();
+	    set.addAll(one);
+	    set.addAll(two);
+	    return (one.size() + two.size()) - set.size();
+	}
+}
