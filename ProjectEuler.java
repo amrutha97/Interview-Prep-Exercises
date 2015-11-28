@@ -11,7 +11,6 @@ public class ArraysPractice {
 		//System.out.println(lastIndexOf(arr, 85));	
 		System.out.println(stdev(arr));
 		System.out.println("Hello World");
-		System.out.println("Amrutha");
 	}
 	
 	public static int lastIndexOf(int[] arr, int num) {
