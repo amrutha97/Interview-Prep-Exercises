@@ -1,4 +1,4 @@
-# Interview-Prep-Exercises
+//Interview-Prep-Exercises
 Just some preparation for technical interviews. 
 
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ public class ArraysPractice {
 		int[] arr = {1, 2, 3};
 		//System.out.println(lastIndexOf(arr, 85));	
 		System.out.println(stdev(arr));
+		System.out.println("Hello World");
 	}
 	
 	public static int lastIndexOf(int[] arr, int num) {
