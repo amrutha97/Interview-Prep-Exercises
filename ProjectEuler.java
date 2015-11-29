@@ -14,6 +14,9 @@ public class ArraysPractice {
         System.out.println("Did my github commit work?");
 	}
 	
-
+ public static int evenFibNum() {
+ 
+        return 0;
+    }
 	
 }
